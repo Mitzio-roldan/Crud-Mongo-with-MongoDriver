@@ -16,4 +16,11 @@ router.put('/', controllerUser.usuarioPut)
 router.get('/rol', controllerUser.usuariosPorRol)
 
 
+router.get('/diferente', controllerUser.usuariosDiferentes)
+
+
+router.get('/mayor_menor', controllerUser.Mayor_Menor)
+
+
+
 module.exports = router
