@@ -19,7 +19,10 @@ router.get('/rol', controllerUser.usuariosPorRol)
 router.get('/diferente', controllerUser.usuariosDiferentes)
 
 
-router.get('/mayor_menor', controllerUser.Mayor_Menor)
+router.get('/mayor_menor_igual', controllerUser.Mayor_Menor_Igual)
+
+
+router.get('/and_or', controllerUser.And_Or)
 
 
 
