@@ -76,7 +76,7 @@ const controller = {
 
             // selecciona coleccion, inserta la data y crea el indice
             const resultado_usuario = await db.collection('Usuarios').insertOne({ Data: data, Estado: "Activo" })
-            await db.collection('Usuarios').createIndex({ "Data.correo": 1 }, { unique: true });
+            await db.collection('Usuarios').createIndex({ "Data.correo": 1 , "Data.dni": 1}, { unique: true });
 
             res.json({
                 resultado_usuario
@@ -149,7 +149,12 @@ const controller = {
                 }
             },
             // Condicional: Solo trae los usuarios con el rol designado en la query usando operador LIKE
-            { $match: { 'Data.rol': new RegExp(nombre,'i') } },
+            // la i del final es por la sensibilidad de las mayusculas 
+            // comodin adelante % = new RegExp( '^' + nombre, 'i')
+            // comodin atras % = new RegExp( nombre + '$' , 'i')
+            // comienze y termine  = new RegExp( '^' + nombre + '$' , 'i')
+            // doble comodin = new RegExp(nombre, 'i')
+            { $match: { 'Data.rol': new RegExp( '^' + nombre, 'i') } },
             {
                 // Como se muestra la informacion
                 $project:
